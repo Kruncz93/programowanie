@@ -1,2 +1,0 @@
-# programowanie
-Nowe repozytorium
