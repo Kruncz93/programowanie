@@ -112,8 +112,7 @@ script
 						<div class="msg">${msg}</div>
 					</c:if>
 
-					<form name='RegForm' action='saveContact' method='POST'
-						modelAttribute="users">
+					<form name='RegForm' action='saveContact' method='POST' modelAttribute="users">
 						<table>
 							<tr>
 								<td>User:</td>

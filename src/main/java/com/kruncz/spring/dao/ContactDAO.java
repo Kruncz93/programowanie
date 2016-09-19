@@ -15,5 +15,5 @@ public interface ContactDAO {
 	
 	public List<Users> list();
 	
-	public void delete(int id);
+	public void delete(int userid);
 }

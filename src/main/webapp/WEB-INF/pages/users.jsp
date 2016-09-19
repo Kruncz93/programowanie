@@ -129,14 +129,17 @@ article {
 	        	<th>Password</th>
 	 			<th>Action</th>       	
 				<c:forEach var="users" items="${listUsers}" varStatus="status">
+				<c:if test="${pageContext.request.userPrincipal.name != users.username}">
 	        	<tr>
 	        		<td>${status.index + 1}</td>
 					<td>${users.username}</td>
 					<td>${users.password}</td>	
 					<td>
-					<a href="deleteContact?id=${users.id}">Delete</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="deleteContact?id=${users.id}">Delete</a>
 					</td>			
 	        	</tr>
+	        	</c:if>
 				</c:forEach>	        	
 			</table>
     	</div>

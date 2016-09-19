@@ -49,6 +49,7 @@ public class PostDAOImpl implements PostDAO {
 		
 		return listPosts;
 	}
+	
 
 	@Override
 	public Post get(String username) {

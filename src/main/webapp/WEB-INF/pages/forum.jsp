@@ -1,8 +1,11 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <style>
 div.container {
         
@@ -46,7 +49,6 @@ nav ul a {
 }
 
 article {
-	height: 370px;
     margin-left: 170px;
    
     backgorund-color: light blue;
@@ -126,9 +128,9 @@ article {
 	        	<th>Topic</th>
 	        	<th>Text</th>
 	        	
-				<c:forEach var="users" items="${listPost}" varStatus="status">
+				<c:forEach var="post" items="${listPost}" varStatus="status">
 	        	<tr>
-	        		<td>${post.post_id}</td>
+	        		<td>${post.id}</td>
 					<td>${post.username}</td>
 					<td>${post.topic}</td>
 					<td>${post.text}</td>				

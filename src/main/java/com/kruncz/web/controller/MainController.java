@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -25,13 +30,12 @@ import com.kruncz.spring.model.Post;
 import com.kruncz.spring.model.Users;
 
 @Controller
-public class MainController {
+public class MainController{
 	
 	@Autowired
 	private ContactDAO contactDAO;
 	@Autowired
 	private PostDAO postDAO;
-	
 
 	@RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -66,13 +70,12 @@ public class MainController {
 		return new ModelAndView("redirect:/home");
 	}
 	
-	@RequestMapping(value = "/UserPanel**", method = RequestMethod.GET)
-	public ModelAndView UserPage2() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("message", "This is your Profile");
+	@RequestMapping(value = "/UserPanel**")
+	public ModelAndView listPost2(ModelAndView model) throws IOException{
+		List<Post> listPost = postDAO.list();
+		model.addObject("listPost", listPost);
 		model.setViewName("UserPanel");
-
+		
 		return model;
 
 	}
@@ -91,15 +94,6 @@ public class MainController {
 		model.addObject("title", "Admin page");
 		model.addObject("message", "Hello my Master!");
 		model.setViewName("admin");
-
-		return model;
-
-	}
-	
-	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public ModelAndView insert() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("insert");
 
 		return model;
 

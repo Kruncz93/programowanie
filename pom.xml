@@ -7,8 +7,6 @@
 	<artifactId>Projekt</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>SpringSecurity LoginForm Database</name>
-	<url>http://www.mkyong.com/tutorials/spring-security-tutorials/</url>
 
 	<licenses>
 		<license>
@@ -115,4 +113,5 @@
 		</plugins>
 	</build>
 
+	<name>Swiniarnia</name>
 </project>

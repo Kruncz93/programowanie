@@ -6,52 +6,52 @@
 <head>
 <style>
 div.container {
-	height: 400px;
-	width: 100%;
+        
+    height: 400px;
+    width: 100%;
+  
 }
 
 header, footer {
 	height: 135px;
 	padding: 1em;
-	color: white;
-	background-color: black;
-	clear: left;
+    color: white;
+    background-color: black;
+    clear: left;
 }
 
-body {
-	background-image: url('/images/back.png');
-	background-position: -80px;
-}
-
-navR {
-	float: Right;
-	max-width: 160px;
-	margin: 0;
-	padding: 1em;
+body { 
+    background-image: url('/images/back.png');
+    background-position: -80px; 
 }
 
 nav {
-	float: left;
-	max-width: 160px;
-	margin: 0;
-	padding: 1em;
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
 }
-
+navR {
+    float: Right;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
 nav ul {
-	list-style-type: none;
-	padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
-
+   
 nav ul a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 article {
-	height: 370px;
-	margin-left: 170px;
-	backgorund-color: light blue;
-	padding: 1em;
-	overflow: hidden;
+    margin-left: 170px;
+   
+    backgorund-color: light blue;
+    padding: 1em;
+    overflow: hidden;
 }
 </
 script
@@ -116,47 +116,42 @@ script
 		</nav>
 
 		<article>
-		<tr>
-			<form name='saveImage' action='saveImage' method='POST' modelAttribute="users">
-				<table>
-					<tr>
-						<td>User: ${pageContext.request.userPrincipal.name}</td>
-						<td>
-						<input type="hidden" name="username" value="${pageContext.request.userPrincipal.name}" class="field left" readonly>
-						</td>
-					</tr>
-					<h3>Add avatar</h3>
-					Select a file to upload(Max 16MB):
-					<form action="UploadServlet" method="post" enctype="multipart/form-data">
-						<input type="file" name="image" size="50" /> <br /> 
-						<input type="submit" value="Upload File" />
-					</form>
-
-				</table>
-
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-
+		<div style="background-color: rgba(135, 206, 250, 0.5)">
+			<td>
+			<td>User: ${pageContext.request.userPrincipal.name}</td>
+			</td>
+			</tr>
+			<h3>Add avatar</h3>
+			Select a file to upload(Max 16MB):
+			<form action="saveImg" method="post" enctype="multipart/form-data">
+				<input type="file" name="image" /> <input type="submit"
+					value="submit" />
+				<td><input type="hidden" name="username"
+					value="${pageContext.request.userPrincipal.name}"
+					class="field left" readonly></td>
 			</form>
-			<div style="background-color: rgba(135, 206, 250, 0.5)">
-				<div align="center">
-					<h1>Your Posts</h1>
-					<table border="1">
-						<th>No</th>
-						<th>Name</th>
-						<th>Password</th>
-						<th>Action</th>
-						<c:forEach var="users" items="${listUsers}" varStatus="status">
-							<tr>
-								<td>${status.index + 1}</td>
-								<td>${users.username}</td>
-								<td>${users.password}</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
+			<div align="center">
+				<table border="1">
+					<th>No</th>
+					<th>User Name</th>
+					<th>Topic</th>
+					<th>Text</th>
+
+					<c:forEach var="post" items="${listPost}" varStatus="status">
+					<c:if test="${pageContext.request.userPrincipal.name == post.username}">
+						<tr>
+							<td>${post.id}</td>
+							<td>${post.username}</td>
+							<td>${post.topic}</td>
+							<td>${post.text}</td>
+						</tr>
+						</c:if>
+					</c:forEach>
+				</table>
 			</div>
-			<article>
+		</div>
 	</div>
+	</div>
+	<article>
 </body>
 </html>
